@@ -6,92 +6,84 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 10:40:01 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 12:28:37 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-//# include "libft/libft.h"
-//# include "minilibx/mlx.h"
+# include "../libft/libft.h"
+# include <stdlib.h>
 # include <math.h>
-# include <pthread.h>
+# include <mlx.h>
+# include <stdio.h>
 
-# define SIZE 700
-# define THREAD_WIDTH 7
-# define THREAD_NUMBER 100
+// Tamaño de la ventana
+# define SIZE 800
 
-// KEYCODES
+// Teclas y eventos
 # define ESC 53
-# define UP 126
-# define DOWN 125
 # define LEFT 123
 # define RIGHT 124
+# define UP 126
+# define DOWN 125
 # define R 15
 # define C 8
-# define H 4
 # define J 38
-# define P 35
 # define M 46
-
-// MOUSECODES
+# define P 35
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
+// Estructura principal
 typedef struct s_fractal
 {
-	void	*mlx;
-	void	*window;
-	void	*image;
-	void	*pointer_to_image;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		x;
-	int		y;
-	double	zx;
-	double	zy;
-	double	cx;
-	double	cy;
-	int		color;
-	double	offset_x;
-	double	offset_y;
-	double	zoom;
-	char	*name;
-	int		max_iterations;
-}			t_fractal;
+    void    *mlx;
+    void    *window;
+    void    *image;
+    char    *pointer_to_image;
+    int     bits_per_pixel;
+    int     size_line;
+    int     endian;
+    int     x;
+    int     y;
+    double  zoom;
+    double  offset_x;
+    double  offset_y;
+    double  zx;
+    double  zy;
+    double  cx;
+    double  cy;
+    int     color;
+    int     max_iterations;
+    char    *name;
+}               t_fractal;
 
-//utils
-void		put_color_to_pixel(t_fractal *fractal, int x, int y, int colour);
-int			exit_fractal(t_fractal *fractal);
-double		generate_random_c(void);
-void		change_iterations(t_fractal *fractal, int key_code);
+// Funciones principales
+void    calculate_burning_ship(t_fractal *fractal);
+void    calculate_mandelbrot(t_fractal *fractal);
+void    calculate_julia(t_fractal *fractal);
 
-//init
-void		init_fractal(t_fractal *fractal);
-void		init_mlx(t_fractal *fractal);
+void    draw_burning_ship(t_fractal *fractal);
+void    *mandelbrot(void *fractal_void);
+void    julia(t_fractal *fractal);
 
-//mandel_julia
-void		calculate_mandelbrot(t_fractal *fractal);
-void		calculate_julia(t_fractal *fractal);
+int     draw_fractal(t_fractal *fractal, char *query);
 
-//calculate
-void		calculate_burning_ship(t_fractal *fractal);
+void    init_fractal(t_fractal *fractal);
+void    init_mlx(t_fractal *fractal);
 
-//fractol
-int			draw_fractal(t_fractal *fractal, char *query);
-int			main(int argc, char **argv);
+void    put_color_to_pixel(t_fractal *fractal, int x, int y, int color);
+void    set_random_julia(double *cx, double *cy);
 
-//mouse_keys
-void		zoom(t_fractal *fractal, int x, int y, int zoom);
-void		set_random_julia(double *cx, double *cy);
-int			key_hook(int key_code, t_fractal *fractal);
-int			mouse_hook(int mouse_code, int x, int y, t_fractal *fractal);
+void    zoom(t_fractal *fractal, int x, int y, int zoom);
+void    change_iterations(t_fractal *fractal, int key_code);
 
-//draw
-void		*mandelbrot(void *fractal_void);
-void		julia(t_fractal *fractal);
-void		draw_burning_ship(t_fractal *fractal);
+int     key_hook(int key_code, t_fractal *fractal);
+int     mouse_hook(int mouse_code, int x, int y, t_fractal *fractal);
+int     exit_fractal(t_fractal *fractal);
+
+double  generate_random_c(void);
 
 #endif
