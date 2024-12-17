@@ -6,9 +6,11 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:20:42 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:25:19 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:37 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 void	init_fractal(t_fractal *fractal)
 {

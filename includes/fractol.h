@@ -6,15 +6,15 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:30:46 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:01 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft/libft.h"
-# include "minilibx/mlx.h"
+//# include "libft/libft.h"
+//# include "minilibx/mlx.h"
 # include <math.h>
 # include <pthread.h>
 
@@ -62,35 +62,36 @@ typedef struct s_fractal
 	int		max_iterations;
 }			t_fractal;
 
-// utils.c
+//utils
 void		put_color_to_pixel(t_fractal *fractal, int x, int y, int colour);
 int			exit_fractal(t_fractal *fractal);
 double		generate_random_c(void);
 void		change_iterations(t_fractal *fractal, int key_code);
 
-// init.c
+//init
 void		init_fractal(t_fractal *fractal);
 void		init_mlx(t_fractal *fractal);
 
-// mandelbrot.c
+//mandel_julia
 void		calculate_mandelbrot(t_fractal *fractal);
-
-// julia.c
 void		calculate_julia(t_fractal *fractal);
 
-// burning_ship.c
+//calculate
 void		calculate_burning_ship(t_fractal *fractal);
 
-// main.c
+//fractol
 int			draw_fractal(t_fractal *fractal, char *query);
+int			main(int argc, char **argv);
 
-// mouse_and_keys.c
+//mouse_keys
+void		zoom(t_fractal *fractal, int x, int y, int zoom);
+void		set_random_julia(double *cx, double *cy);
 int			key_hook(int key_code, t_fractal *fractal);
 int			mouse_hook(int mouse_code, int x, int y, t_fractal *fractal);
 
-// draw.c
-void		*draw_mandelbrot(void *fractal_void);
-void		draw_julia(t_fractal *fractal);
+//draw
+void		*mandelbrot(void *fractal_void);
+void		julia(t_fractal *fractal);
 void		draw_burning_ship(t_fractal *fractal);
 
 #endif

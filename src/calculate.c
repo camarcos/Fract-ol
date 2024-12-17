@@ -6,9 +6,11 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:22:00 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:23:22 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:17 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 void	calculate_burning_ship(t_fractal *fractal)
 {

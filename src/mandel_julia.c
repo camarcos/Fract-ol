@@ -6,9 +6,11 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:28 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:26:05 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:42 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 void	calculate_mandelbrot(t_fractal *fractal)
 {

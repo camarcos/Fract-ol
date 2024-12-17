@@ -6,9 +6,11 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:24:49 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:27:34 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:46 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 void	zoom(t_fractal *fractal, int x, int y, int zoom)
 {

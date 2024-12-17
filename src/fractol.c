@@ -6,9 +6,11 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:26:48 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:33 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fractol.h"
 
 int	draw_fractal(t_fractal *fractal, char *query)
 {

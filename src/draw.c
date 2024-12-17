@@ -6,11 +6,13 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:24:10 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:24:40 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 10:40:25 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*draw_mandelbrot(void *fractal_void)
+#include "../includes/fractol.h"
+
+void	*mandelbrot(void *fractal_void)
 {
 	t_fractal	*fractal;
 
@@ -29,7 +31,7 @@ void	*draw_mandelbrot(void *fractal_void)
 	}
 	return (NULL);
 }
-void	draw_julia(t_fractal *fractal)
+void	julia(t_fractal *fractal)
 {
 	fractal->x = 0;
 	fractal->y = 0;
