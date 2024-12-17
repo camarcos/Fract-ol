@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 10:40:33 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 17:59:38 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	draw_fractal(t_fractal *fractal, char *query)
 {
 	if (ft_strncmp(query, "mandel", 7) == 0)
-		draw_mandelbrot(fractal);
+		mandelbrot(fractal);
 	else if (ft_strncmp(query, "julia", 6) == 0)
 	{
 		if (!fractal->cx && !fractal->cy)
@@ -23,7 +23,7 @@ int	draw_fractal(t_fractal *fractal, char *query)
 			fractal->cx = -0.745429;
 			fractal->cy = 0.05;
 		}
-		draw_julia(fractal);
+		julia(fractal);
 	}
 	else if (ft_strncmp(query, "ship", 5) == 0)
 		draw_burning_ship(fractal);

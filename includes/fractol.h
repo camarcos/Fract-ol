@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 12:28:37 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 17:59:07 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h"
 # include <stdio.h>
 
-// Tamaño de la ventana
+//Tamaño de la ventana
 # define SIZE 800
 
-// Teclas y eventos
+# define THREAD_WIDTH 7
+# define THREAD_NUMBER 100
+
+//Keycodes
 # define ESC 53
 # define LEFT 123
 # define RIGHT 124
@@ -33,10 +36,12 @@
 # define J 38
 # define M 46
 # define P 35
+
+//Mousecodes
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-// Estructura principal
+//Estructura principal
 typedef struct s_fractal
 {
     void    *mlx;
@@ -60,7 +65,7 @@ typedef struct s_fractal
     char    *name;
 }               t_fractal;
 
-// Funciones principales
+//Funciones
 void    calculate_burning_ship(t_fractal *fractal);
 void    calculate_mandelbrot(t_fractal *fractal);
 void    calculate_julia(t_fractal *fractal);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:20:27 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/16 18:29:21 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/17 18:02:25 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,17 @@ void	put_color_to_pixel(t_fractal *fractal, int x, int y, int color)
 {
 	int	*buffer;
 
-	buffer = fractal->pointer_to_image;
+	buffer = (int *)fractal->pointer_to_image;
 	buffer[(y * fractal->size_line / 4) + x] = color;
 }
+
+// void	put_color_to_pixel(t_fractal *fractal, int x, int y, int color)
+// {
+// 	int	*buffer;
+
+// 	buffer = fractal->pointer_to_image;
+// 	buffer[(y * fractal->size_line / 4) + x] = color;
+// }
 
 int	exit_fractal(t_fractal *fractal)
 {
