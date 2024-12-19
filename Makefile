@@ -6,7 +6,7 @@
 #    By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 17:25:22 by camarcos          #+#    #+#              #
-#    Updated: 2024/12/17 18:10:44 by camarcos         ###   ########.fr        #
+#    Updated: 2024/12/19 13:08:15 by camarcos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,11 @@ NAME = FRACTOL
 LIBFT = libft/libft.a
 
 # SOURCE FILES
-SRC =	src/draw.c \
+SRC =	src/utils.c \
 		src/fractol.c \
 		src/init.c \
 		src/mandel_julia.c \
 		src/mouse_keys.c \
-		src/utils.c
 
 # OBJECT FILES
 OBJ_FILES = $(SRC:.c=.o)

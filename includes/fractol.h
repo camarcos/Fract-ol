@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/18 13:25:29 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/19 13:40:32 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 # define FRACTOL_H
 
 # include "../libft/libft.h"
-# include <stdlib.h>
-# include <math.h>
 # include "../minilibx-linux/mlx.h"
+# include <math.h>
 # include <stdio.h>
+# include <stdlib.h>
 
-//Tamaño de la ventana
+// Tamaño de la ventana
 # define SIZE 800
 
 # define THREAD_WIDTH 7
 # define THREAD_NUMBER 100
 
-//Keycodes
+// Keycodes
 # define ESC 65307
 # define LEFT 65361
 # define RIGHT 65363
@@ -37,60 +37,63 @@
 # define M 109
 # define P 112
 
-//Mousecodes
+// Mousecodes
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-//Estructura principal
+// Estructura principal
 typedef struct s_fractal
 {
-    void    *mlx;
-    void    *window;
-    void    *image;
-    char    *pointer_to_image;
-    int     bits_per_pixel;
-    int     size_line;
-    int     endian;
-    int     x;
-    int     y;
-    double  zoom;
-    double  offset_x;
-    double  offset_y;
-    int window_width;
-    int window_height;
-    double  zx;
-    double  zy;
-    double  cx;
-    double  cy;
-    int     color;
-    int     max_iterations;
-    char    *name;
-}               t_fractal;
+	void	*mlx;
+	void	*window;
+	void	*image;
+	char	*pointer_to_image;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	int		x;
+	int		y;
+	double	zoom;
+	double	offset_x;
+	double	offset_y;
+	int		window_width;
+	int		window_height;
+	double	zx;
+	double	zy;
+	double	cx;
+	double	cy;
+	int		color;
+	int		max_iterations;
+	char	*name;
+}			t_fractal;
 
-//Funciones
-void    calculate_burning_ship(t_fractal *fractal);
-void    calculate_mandelbrot(t_fractal *fractal);
-void    calculate_julia(t_fractal *fractal);
+// utils
+void		put_color_to_pixel(t_fractal *fractal, int x, int y, int color);
+int			exit_fractal(t_fractal *fractal);
+void		change_iterations(t_fractal *fractal, int key_code);
+int			is_valid_number(const char *str);
+double		ft_atodbl(const char *str);
 
-void    draw_burning_ship(t_fractal *fractal);
-void    *mandelbrot(void *fractal_void);
-void    julia(t_fractal *fractal);
+// fractol
+int			draw_fractal(t_fractal *fractal, char *query);
+t_fractal	*initialize_fractal(int argc, char **argv);
+int			main(int argc, char **argv);
 
-int     draw_fractal(t_fractal *fractal, char *query);
+// init
+void		init_fractal(t_fractal *fractal);
+void		init_mlx(t_fractal *fractal);
 
-void    init_fractal(t_fractal *fractal);
-void    init_mlx(t_fractal *fractal);
+// mandel_julia
+void		calculate_mandelbrot(t_fractal *fractal);
+void		*mandelbrot(void *fractal_void);
+void		calculate_julia(t_fractal *fractal);
+void		julia(t_fractal *fractal);
 
-void    put_color_to_pixel(t_fractal *fractal, int x, int y, int color);
-void    set_random_julia(double *cx, double *cy);
-
-void    zoom(t_fractal *fractal, int x, int y, int zoom);
-void    change_iterations(t_fractal *fractal, int key_code);
-
-int     key_hook(int key_code, t_fractal *fractal);
-int     mouse_hook(int mouse_code, int x, int y, t_fractal *fractal);
-int     exit_fractal(t_fractal *fractal);
-
-double  generate_random_c(void);
+// mouse_keys
+void		zoom(t_fractal *fractal, int zoom, int x, int y);
+double		generate_random_c(void);
+void		set_random_julia(double *cx, double *cy);
+int			key_hook(int key_code, t_fractal *fractal);
+int			mouse_hook(int mouse_code, int x, int y, t_fractal *fractal);
 
 #endif

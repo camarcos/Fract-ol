@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/18 18:34:33 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/19 14:18:06 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,33 @@ int	draw_fractal(t_fractal *fractal, char *query)
 	return (0);
 }
 
+t_fractal	*initialize_fractal(int argc, char **argv)
+{
+	t_fractal	*fractal;
+
+	if (!(fractal = malloc(sizeof(t_fractal))))
+		return (ft_putendl_fd("Error: Memory allocation failed.", 2), NULL);
+	*fractal = (t_fractal){.cx = 0.0, .cy = 0.0, .zoom = 1.0, 
+		.offset_x = 0.0, .offset_y = 0.0, .name = argv[1]};
+	if (!ft_strncmp(argv[1], "mandel", 10) && (argc == 2 || argc > 2))
+		return (fractal); 
+	if (!ft_strncmp(argv[1], "julia", 5) && argc == 4)
+	{
+		fractal->cx = ft_atodbl(argv[2]);
+		fractal->cy = ft_atodbl(argv[3]);
+		return (fractal);
+	}
+	free(fractal);
+	return (ft_putendl_fd("Error: Invalid arguments.", 2), NULL);
+}
+
 int	main(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10))
-		|| (ac == 4 && !ft_strncmp(av[1], "julia", 5))
-		{
-			fractal.julia_x = ft_atodbl(av[2], &fractal);
-			fractal.julia_y = ft_atodbl(av[3], &fractal);
-			if (fractal.error == 1)
-			ft_putendl_fd("Error.\n", 1);
-
-		}
-	fractal = malloc(sizeof(t_fractal));
+	fractal = initialize_fractal(argc, argv);
+	if (!fractal)
+		return (1);
 	init_fractal(fractal);
 	init_mlx(fractal);
 	mlx_key_hook(fractal->window, key_hook, fractal);
@@ -56,5 +69,7 @@ int	main(int argc, char **argv)
 	mlx_hook(fractal->window, 17, 0L, exit_fractal, fractal);
 	draw_fractal(fractal, argv[1]);
 	mlx_loop(fractal->mlx);
+
+	free(fractal);
 	return (0);
 }

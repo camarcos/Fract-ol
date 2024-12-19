@@ -3,41 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:24:49 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/18 13:22:39 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/19 14:18:41 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void zoom(t_fractal *fractal, int zoom)
+void	zoom(t_fractal *fractal, int zoom, int x, int y)
 {
 	double zoom_level;
-	double center_x;
-	double center_y;
 
 	zoom_level = 1.42;
-	center_x = 800 / 2.0;
-	center_y = 800 / 2.0;
-
 	if (zoom == 1)
 	{
-		fractal->offset_x = (center_x / fractal->zoom + fractal->offset_x) 
-							- (center_x / (fractal->zoom * zoom_level));
-		fractal->offset_y = (center_y / fractal->zoom + fractal->offset_y) 
-							- (center_y / (fractal->zoom * zoom_level));
+		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) 
+							- (x / (fractal->zoom * zoom_level));
+		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) 
+							- (y / (fractal->zoom * zoom_level));
 		fractal->zoom *= zoom_level;
 	}
 	else if (zoom == -1)
 	{
-		fractal->offset_x = (center_x / fractal->zoom + fractal->offset_x) 
-							- (center_x / (fractal->zoom / zoom_level));
-		fractal->offset_y = (center_y / fractal->zoom + fractal->offset_y) 
-							- (center_y / (fractal->zoom / zoom_level));
+		if (fractal->zoom / zoom_level <= 0.0)
+			return;
+		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) 
+							- (x / (fractal->zoom / zoom_level));
+		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) 
+							- (y / (fractal->zoom / zoom_level));
 		fractal->zoom /= zoom_level;
 	}
+}
+
+double	generate_random_c(void)
+{
+	return (((double)rand() / RAND_MAX) * 3.0 - 1.5);
 }
 
 void	set_random_julia(double *cx, double *cy)
@@ -73,9 +75,9 @@ int	key_hook(int key_code, t_fractal *fractal)
 int	mouse_hook(int mouse_code, int x, int y, t_fractal *fractal)
 {
 	if (mouse_code == SCROLL_UP)
-		zoom(fractal, x, y, 1);
+		zoom(fractal, 1, x, y);
 	else if (mouse_code == SCROLL_DOWN)
-		zoom(fractal, x, y, -1);
+		zoom(fractal, -1, x, y);
 	draw_fractal(fractal, fractal->name);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:20:27 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/18 18:33:36 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/19 13:03:00 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ int	exit_fractal(t_fractal *fractal)
 	return (0);
 }
 
-double	generate_random_c(void)
-{
-	return (((double)rand() / RAND_MAX) * 3.0 - 1.5);
-}
-
 void	change_iterations(t_fractal *fractal, int key_code)
 {
 	if (key_code == M)
@@ -55,14 +50,14 @@ int	is_valid_number(const char *str)
         str++;
     if (*str == '-' || *str == '+')
         str++;
-    if (!(*str) || (!isdigit(*str) && *str != '.'))
+    if (!(*str) || (!ft_isdigit(*str) && *str != '.'))
         return (0);
-    while (isdigit(*str))
+    while (ft_isdigit(*str))
         str++;
     if (*str == '.')
     {
         str++;
-        while (isdigit(*str))
+        while (ft_isdigit(*str))
             str++;
     }
     return (*str == '\0');
@@ -83,10 +78,10 @@ double	ft_atodbl(const char *str)
         str++;
     if (*str == '-' || *str == '+')
         sign = (*str++ == '-') ? -1 : 1;
-    while (isdigit(*str))
+    while (ft_isdigit(*str))
         result = result * 10.0 + (*str++ - '0');
     if (*str == '.')
-        while (isdigit(*++str))
+        while (ft_isdigit(*++str))
         {
             result = result * 10.0 + (*str - '0');
             factor *= 10.0;

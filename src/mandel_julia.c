@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandel_julia.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:28 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/18 18:32:08 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/19 14:09:28 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,26 @@ void	calculate_mandelbrot(t_fractal *fractal)
 				* i));
 }
 
+void	*mandelbrot(void *fractal_void)
+{
+	t_fractal	*fractal;
+
+	fractal = (t_fractal *)fractal_void;
+	fractal->x = 0;
+	fractal->y = 0;
+	while (fractal->x < SIZE)
+	{
+		while (fractal->y < SIZE)
+		{
+			calculate_mandelbrot(fractal);
+			fractal->y++;
+		}
+		fractal->x++;
+		fractal->y = 0;
+	}
+	return (NULL);
+}
+
 void	calculate_julia(t_fractal *fractal)
 {
 	int		i;
@@ -48,8 +68,6 @@ void	calculate_julia(t_fractal *fractal)
 	fractal->name = "julia";
 	fractal->zx = fractal->x / fractal->zoom + fractal->offset_x;
 	fractal->zy = fractal->y / fractal->zoom + fractal->offset_y;
-	if (!ft_atodbl(fractal->cx) || !ft_atodbl(fractal->cy))
-        return (ft_putendl_fd("Error: params must be integers.\n", 2));
 	i = 0;
 	while (++i < fractal->max_iterations)
 	{
@@ -66,5 +84,21 @@ void	calculate_julia(t_fractal *fractal)
 	else
 		put_color_to_pixel(fractal, fractal->x, fractal->y, (fractal->color * (i
 					% 255)));
+}
+
+void	julia(t_fractal *fractal)
+{
+	fractal->x = 0;
+	fractal->y = 0;
+	while (fractal->x < SIZE)
+	{
+		while (fractal->y < SIZE)
+		{
+			calculate_julia(fractal);
+			fractal->y++;
+		}
+		fractal->x++;
+		fractal->y = 0;
+	}
 }
 
