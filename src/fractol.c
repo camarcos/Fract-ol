@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 17:59:38 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:34:33 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int	draw_fractal(t_fractal *fractal, char *query)
 		}
 		julia(fractal);
 	}
-	else if (ft_strncmp(query, "ship", 5) == 0)
-		draw_burning_ship(fractal);
 	else
 	{
-		ft_putendl_fd("Available fractals: mandel, julia, ship", 1);
+		ft_putendl_fd("Available fractals: mandel, julia", 1);
 		exit_fractal(fractal);
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image, 0,
@@ -41,12 +39,15 @@ int	main(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (argc != 2)
-	{
-		ft_putendl_fd("Usage: ./fractol <fractal>", 1);
-		ft_putendl_fd("Available fractals: mandelbrot, julia, burningship", 1);
-		return (0);
-	}
+	if (ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10))
+		|| (ac == 4 && !ft_strncmp(av[1], "julia", 5))
+		{
+			fractal.julia_x = ft_atodbl(av[2], &fractal);
+			fractal.julia_y = ft_atodbl(av[3], &fractal);
+			if (fractal.error == 1)
+			ft_putendl_fd("Error.\n", 1);
+
+		}
 	fractal = malloc(sizeof(t_fractal));
 	init_fractal(fractal);
 	init_mlx(fractal);

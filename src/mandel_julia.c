@@ -6,7 +6,7 @@
 /*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:28 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 12:20:54 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/18 18:32:08 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	calculate_julia(t_fractal *fractal)
 	fractal->name = "julia";
 	fractal->zx = fractal->x / fractal->zoom + fractal->offset_x;
 	fractal->zy = fractal->y / fractal->zoom + fractal->offset_y;
+	if (!ft_atodbl(fractal->cx) || !ft_atodbl(fractal->cy))
+        return (ft_putendl_fd("Error: params must be integers.\n", 2));
 	i = 0;
 	while (++i < fractal->max_iterations)
 	{

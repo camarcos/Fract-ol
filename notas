@@ -1,4 +1,4 @@
-1. No se cierra con el escape
-2. Cuando lo abres con un nombre que no es se abre y se cierra
-3. Zoom del bonus
-4. Parametros del julia, comprobar que los Parametros sean numeros y tipos long
+1. No se cierra con el escape CHECK
+2. Cuando lo abres con un nombre que no es se abre y se cierra CHECK
+3. Zoom del bonus CHECK
+4. Parametros del julia, comprobar que los Parametros sean numeros y tipos long CHECK

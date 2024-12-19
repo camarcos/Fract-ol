@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/17 17:59:07 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:25:29 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@
 # define THREAD_NUMBER 100
 
 //Keycodes
-# define ESC 53
-# define LEFT 123
-# define RIGHT 124
-# define UP 126
-# define DOWN 125
-# define R 15
-# define C 8
-# define J 38
-# define M 46
-# define P 35
+# define ESC 65307
+# define LEFT 65361
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
+# define R 114
+# define C 99
+# define J 106
+# define M 109
+# define P 112
 
 //Mousecodes
 # define SCROLL_UP 4
@@ -56,6 +56,8 @@ typedef struct s_fractal
     double  zoom;
     double  offset_x;
     double  offset_y;
+    int window_width;
+    int window_height;
     double  zx;
     double  zy;
     double  cx;
