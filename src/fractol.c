@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 14:29:47 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:12:15 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ t_fractal	*initialize_fractal(int argc, char **argv)
 	}
 	free(fractal);
 	return (ft_putendl_fd("Error: Invalid arguments.", 2), NULL);
+}
+
+void	change_iterations(t_fractal *fractal, int key_code)
+{
+	if (key_code == M)
+	{
+		if (fractal->max_iterations > 42)
+			fractal->max_iterations -= 42;
+	}
+	else if (key_code == P)
+	{
+		if (fractal->max_iterations < 4200)
+			fractal->max_iterations += 42;
+	}
 }
 
 int	main(int argc, char **argv)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:29:45 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 13:40:32 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:14:31 by carolinamc       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,16 @@ typedef struct s_fractal
 // utils
 void		put_color_to_pixel(t_fractal *fractal, int x, int y, int color);
 int			exit_fractal(t_fractal *fractal);
-void		change_iterations(t_fractal *fractal, int key_code);
-int			is_valid_number(const char *str);
+//int		is_valid_number(const char *str);
+//double	ft_atodbl(const char *str);
+int			sign_whitespace(const char **str);
+void		validate_number_format(const char *str);
 double		ft_atodbl(const char *str);
 
 // fractol
 int			draw_fractal(t_fractal *fractal, char *query);
 t_fractal	*initialize_fractal(int argc, char **argv);
+void		change_iterations(t_fractal *fractal, int key_code);
 int			main(int argc, char **argv);
 
 // init
