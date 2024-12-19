@@ -6,7 +6,7 @@
 /*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:24:49 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 14:18:41 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:30:33 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	zoom(t_fractal *fractal, int zoom, int x, int y)
 {
-	double zoom_level;
+	double	zoom_level;
 
 	zoom_level = 1.42;
 	if (zoom == 1)
 	{
-		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) 
-							- (x / (fractal->zoom * zoom_level));
-		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) 
-							- (y / (fractal->zoom * zoom_level));
+		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x
+				/ (fractal->zoom * zoom_level));
+		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y
+				/ (fractal->zoom * zoom_level));
 		fractal->zoom *= zoom_level;
 	}
 	else if (zoom == -1)
 	{
 		if (fractal->zoom / zoom_level <= 0.0)
-			return;
-		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) 
-							- (x / (fractal->zoom / zoom_level));
-		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) 
-							- (y / (fractal->zoom / zoom_level));
+			return ;
+		fractal->offset_x = (x / fractal->zoom + fractal->offset_x) - (x
+				/ (fractal->zoom / zoom_level));
+		fractal->offset_y = (y / fractal->zoom + fractal->offset_y) - (y
+				/ (fractal->zoom / zoom_level));
 		fractal->zoom /= zoom_level;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 14:18:06 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:29:47 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ t_fractal	*initialize_fractal(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (!(fractal = malloc(sizeof(t_fractal))))
-		return (ft_putendl_fd("Error: Memory allocation failed.", 2), NULL);
-	*fractal = (t_fractal){.cx = 0.0, .cy = 0.0, .zoom = 1.0, 
+	if (!(fractal))
+	{
+		((fractal = malloc(sizeof(t_fractal))));
+		return ((ft_putendl_fd("Error: Memory allocation failed.", 2), NULL));
+	}
+	*fractal = (t_fractal){.cx = 0.0, .cy = 0.0, .zoom = 1.0,
 		.offset_x = 0.0, .offset_y = 0.0, .name = argv[1]};
 	if (!ft_strncmp(argv[1], "mandel", 10) && (argc == 2 || argc > 2))
-		return (fractal); 
+		return (fractal);
 	if (!ft_strncmp(argv[1], "julia", 5) && argc == 4)
 	{
 		fractal->cx = ft_atodbl(argv[2]);
@@ -69,7 +72,6 @@ int	main(int argc, char **argv)
 	mlx_hook(fractal->window, 17, 0L, exit_fractal, fractal);
 	draw_fractal(fractal, argv[1]);
 	mlx_loop(fractal->mlx);
-
 	free(fractal);
 	return (0);
 }

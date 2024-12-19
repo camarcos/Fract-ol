@@ -6,7 +6,7 @@
 /*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:28 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 14:09:28 by camarcos         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:30:10 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,3 @@ void	julia(t_fractal *fractal)
 		fractal->y = 0;
 	}
 }
-
