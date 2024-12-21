@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:21:37 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 16:12:15 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/21 19:02:22 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ t_fractal	*initialize_fractal(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (!(fractal))
+	fractal = malloc(sizeof(t_fractal));
+	if (!fractal)
 	{
-		((fractal = malloc(sizeof(t_fractal))));
-		return ((ft_putendl_fd("Error: Memory allocation failed.", 2), NULL));
+		ft_putendl_fd("Error: Memory allocation failed.", 2);
+		return (NULL);
 	}
 	*fractal = (t_fractal){.cx = 0.0, .cy = 0.0, .zoom = 1.0,
 		.offset_x = 0.0, .offset_y = 0.0, .name = argv[1]};

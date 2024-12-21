@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinamc <carolinamc@student.42.fr>      +#+  +:+       +#+        */
+/*   By: camarcos <camarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 18:20:27 by carolinamc        #+#    #+#             */
-/*   Updated: 2024/12/19 16:28:28 by carolinamc       ###   ########.fr       */
+/*   Updated: 2024/12/21 19:06:22 by camarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,59 +30,11 @@ int	exit_fractal(t_fractal *fractal)
 	return (0);
 }
 
-// int	is_valid_number(const char *str)
-// {
-// 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-// 		str++;
-// 	if (*str == '-' || *str == '+')
-// 		str++;
-// 	if (!(*str) || (!ft_isdigit(*str) && *str != '.'))
-// 		return (0);
-// 	while (ft_isdigit(*str))
-// 		str++;
-// 	if (*str == '.')
-// 	{
-// 		str++;
-// 		while (ft_isdigit(*str))
-// 			str++;
-// 	}
-// 	return (*str == '\0');
-// }
-
-// double	ft_atodbl(const char *str)
-// {
-// 	double	result;
-// 	double	factor;
-// 	int		sign;
-
-// 	result = 0.0;
-// 	factor = 1.0;
-// 	sign = 1;
-// 	if (!is_valid_number(str))
-// 	{
-// 		ft_putendl_fd("Error: no es un número válido.", 1);
-// 		exit(1);
-// 	}
-// 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-// 		str++;
-// 	if (*str == '-' || *str == '+')
-// 		sign = (*str++ == '-') ? -1 : 1;
-// 	while (ft_isdigit(*str))
-// 		result = result * 10.0 + (*str++ - '0');
-// 	if (*str == '.')
-// 		while (ft_isdigit(*++str))
-// 		{
-// 			result = result * 10.0 + (*str - '0');
-// 			factor *= 10.0;
-// 		}
-// 	return (sign * result / factor);
-// }
-
 int	sign_whitespace(const char **str)
 {
 	int	sign;
 
-	sing = 1;
+	sign = 1;
 	while (**str == ' ' || (**str >= '\t' && **str <= '\r'))
 		(*str)++;
 	if (**str == '-' || **str == '+')
@@ -96,9 +48,6 @@ int	sign_whitespace(const char **str)
 
 void	validate_number_format(const char *str)
 {
-	const char	*start;
-
-	start = str;
 	if (!(*str) || (!ft_isdigit(*str) && *str != '.'))
 	{
 		ft_putendl_fd("Error: no es un número válido.", 1);
@@ -127,7 +76,7 @@ double	ft_atodbl(const char *str)
 
 	result = 0.0;
 	factor = 1.0;
-	sign = parse_sign_and_whitespace(&str);
+	sign = sign_whitespace(&str);
 	validate_number_format(str);
 	while (ft_isdigit(*str))
 		result = result * 10.0 + (*str++ - '0');
